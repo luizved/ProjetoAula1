@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    
+
+    
+    "module": "nodenext",
+    "target": "esnext",
+    "types": [],
+    
+
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    "outDir": "dist", //diretorio de saída dos arquivos ja para a  visualização do projeto
+    "rootDir": "src",
+    
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+  }
+}
