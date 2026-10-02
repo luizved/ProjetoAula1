@@ -12,5 +12,5 @@ app.get('/', (req: Request, res: Response) => {
 
 //Iniciar o servidor na porta 8080
 app.listen(8080, () => {
-    console.log('Servidor iniciado na porta 8080: http://localhost:8080');
-});
+    console.log('Servidor iniciado com sucesso na porta 8080: http://localhost:8080');
+});git 
