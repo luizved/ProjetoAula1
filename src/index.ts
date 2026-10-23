@@ -1,16 +1,38 @@
-//Importar a biblioteca express 
 import express from 'express';
-import type { Request, Response } from 'express';
+import dotenv from 'dotenv';
+import { AppDataSource } from './data-source';
 
-//Criar a Aplicação express
+import AuthController from './controllers/AuthController';
+import SituationsController from './controllers/SituationsController';
+import ProductCategoriesController from './controllers/ProductCategoriesController';
+import ProductSituationsController from "./controllers/ProductSituationsController";
+import ProductsController from "./controllers/ProductsController";
+
+dotenv.config();
+
 const app = express();
 
-//Criar a rota get principal
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, World!');
-});
+app.use(express.json());
 
-//Iniciar o servidor na porta 8080
-app.listen(8080, () => {
-    console.log('Servidor iniciado com sucesso na porta 8080: http://localhost:8080');
-});git 
+app.use('/', AuthController);
+app.use('/', SituationsController);
+app.use('/', ProductCategoriesController);
+app.use('/', ProductSituationsController);
+app.use('/', ProductsController);
+
+const PORT = Number(process.env.PORT) || 8080;
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Conexão com o banco de dados estabelecida com sucesso!');
+
+    app.listen(PORT, () => {
+      console.log(
+        `O servidor está em execução na porta ${PORT}: http://localhost:${PORT}`
+      );
+    });
+  })
+  .catch((error) => {
+    console.error('Erro ao conectar ao banco de dados:', error);
+    process.exit(1);
+  });
